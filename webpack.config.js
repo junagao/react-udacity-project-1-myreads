@@ -29,6 +29,26 @@ module.exports = {
         test: /\.(sc|c)ss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
+      {
+        test: /.(jpg|jpeg|png|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]-[hash:8].[ext]',
+              outputPath: (url, resourcePath) => {
+                if (/assets\/icons/.test(resourcePath)) {
+                  return `assets/icons/${url}`;
+                }
+                if (/assets\/images/.test(resourcePath)) {
+                  return `assets/images/${url}`;
+                }
+                return `assets/${url}`;
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
