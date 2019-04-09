@@ -4,5 +4,10 @@
   "main": "index.js",
   "repository": "git@github.com:junagao/react-udacity-project-1-myreads.git",
   "author": "Juliane Nagao <julianens@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.0"
+  }
 }
