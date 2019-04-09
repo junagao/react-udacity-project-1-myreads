@@ -1,0 +1,8 @@
+{
+  "name": "react-udacity-project-1-myreads",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:junagao/react-udacity-project-1-myreads.git",
+  "author": "Juliane Nagao <julianens@gmail.com>",
+  "license": "MIT"
+}
