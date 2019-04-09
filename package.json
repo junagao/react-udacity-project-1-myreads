@@ -1,10 +1,14 @@
 {
   "name": "react-udacity-project-1-myreads",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "repository": "git@github.com:junagao/react-udacity-project-1-myreads.git",
   "author": "Juliane Nagao <julianens@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+  },
   "devDependencies": {
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
