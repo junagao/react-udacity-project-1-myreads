@@ -9,6 +9,10 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
