@@ -4,5 +4,8 @@
 # production
 /build
 
+# linting
+.eslintcache
+
 # mac files
 .DS_Store
