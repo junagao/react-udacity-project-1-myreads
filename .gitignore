@@ -4,5 +4,11 @@
 # production
 /build
 
+# linting
+.eslintcache
+
 # mac files
 .DS_Store
+
+# log files
+yarn-error.log
