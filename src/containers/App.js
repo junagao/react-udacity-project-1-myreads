@@ -9,6 +9,9 @@ import './App.scss';
 export default class App extends React.Component {
   state = {
     books: [],
+    query: '',
+    searchResults: [],
+    searchState: '',
   }
 
   componentDidMount() {
@@ -28,8 +31,39 @@ export default class App extends React.Component {
       .then(() => this.fetchBooks());
   };
 
+  handleSearch = (query) => {
+    // set state query and searchState to loading
+    this.setState({ query, searchState: 'loading' });
+
+    // if no user input, set searchResults to [] and searchState to 'clearresults'
+    if (query === '') {
+      this.setState({ searchResults: [''], searchState: 'clearresults' });
+    }
+
+    // if there is a user input, do the search and set the search results to searchResults
+    if (query) {
+      BooksAPI.search(query.trim())
+        .then((searchResults) => {
+          if (Array.isArray(searchResults)) {
+            searchResults.map((book) => {
+              const { books } = this.state;
+              const matchedBook = books.find(b => b.id === book.id);
+              const bookToChange = book;
+              bookToChange.shelf = matchedBook ? matchedBook.shelf : 'none';
+              return book;
+            });
+            this.setState({ searchResults, searchState: 'results' });
+          } else {
+            this.setState({ searchResults: [], searchState: 'noresults' });
+          }
+        });
+    }
+  };
+
   render() {
-    const { books } = this.state;
+    const {
+      books, query, searchResults, searchState,
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -42,7 +76,18 @@ export default class App extends React.Component {
                 <ListBooks books={books} onChangeShelf={this.changeShelf} />
               )}
             />
-            <Route path="/search" component={SearchBooks} />
+            <Route
+              path="/search"
+              render={() => (
+                <SearchBooks
+                  query={query}
+                  searchResults={searchResults}
+                  searchState={searchState}
+                  onSearchBook={this.handleSearch}
+                  onChangeShelf={this.changeShelf}
+                />
+              )}
+            />
             <Route component={PageNotFound} />
           </Switch>
         </div>
