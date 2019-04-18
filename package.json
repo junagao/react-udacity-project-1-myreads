@@ -16,7 +16,9 @@
     "react": "^16.8.6",
     "react-debounce-input": "^3.2.0",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "react-spinners-kit": "^1.9.0",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

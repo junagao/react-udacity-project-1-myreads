@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import SearchResults from './SearchResults';
+import NoSearchResults from './NoSearchResults';
+import ClearSearchResults from './ClearSearchResults';
+import LoadingSearch from './LoadingSearch';
 
 const SearchBooks = (props) => {
   const {
@@ -27,9 +30,9 @@ const SearchBooks = (props) => {
       <div className="search-books-results">
         {{
           results: <SearchResults searchResults={searchResults} onChangeShelf={onChangeShelf} />,
-          noresults: <h3>Search did not return any books. Please try again.</h3>,
-          clearresults: <h3>{searchResults}</h3>,
-          loading: <h3>Loading...</h3>,
+          noSearchResults: <NoSearchResults />,
+          clearSearchResults: <ClearSearchResults searchResults={searchResults} />,
+          loadingSearch: <LoadingSearch />,
         }[searchState]}
       </div>
     </div>

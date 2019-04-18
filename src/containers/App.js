@@ -34,11 +34,11 @@ export default class App extends React.Component {
 
   handleSearch = (query) => {
     // set state query and searchState to loading
-    this.setState({ query, searchState: 'loading' });
+    this.setState({ query, searchState: 'loadingSearch' });
 
     // if no user input, set searchResults to [] and searchState to 'clearresults'
     if (query === '') {
-      this.setState({ searchResults: [''], searchState: 'clearresults' });
+      this.setState({ searchResults: [''], searchState: 'clearSearchResults' });
     }
 
     // if there is a user input, do the search and set the search results to searchResults
@@ -55,7 +55,7 @@ export default class App extends React.Component {
             });
             this.setState({ searchResults, searchState: 'results' });
           } else {
-            this.setState({ searchResults: [], searchState: 'noresults' });
+            this.setState({ searchResults: [], searchState: 'noSearchResults' });
           }
         });
     }
