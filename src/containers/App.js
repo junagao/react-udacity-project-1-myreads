@@ -20,6 +20,14 @@ export default class App extends React.Component {
       .then(books => this.setState({ books }));
   }
 
+  changeShelf = (bookToChangeId, newShelf) => {
+    const { books } = this.state;
+    const bookToChange = books.filter(book => book.id === bookToChangeId)[0];
+    bookToChange.shelf = newShelf;
+    BooksAPI.update(bookToChange, newShelf)
+      .then(() => this.fetchBooks());
+  };
+
   render() {
     const { books } = this.state;
 
@@ -31,7 +39,7 @@ export default class App extends React.Component {
               exact
               path="/"
               render={() => (
-                <ListBooks books={books} />
+                <ListBooks books={books} onChangeShelf={this.changeShelf} />
               )}
             />
             <Route path="/search" component={SearchBooks} />

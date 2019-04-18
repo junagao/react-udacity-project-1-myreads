@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BookGrid from './BookGrid';
 
 const BookShelf = (props) => {
-  const { books } = props;
+  const { books, onChangeShelf } = props;
 
   const shelfTypes = [
     { id: 1, type: 'currentlyReading', title: 'Currently Reading' },
@@ -22,7 +22,7 @@ const BookShelf = (props) => {
                 <h2 className="bookshelf-title">{shelf.title}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
-                    <BookGrid books={shelfBooks} />
+                    <BookGrid books={shelfBooks} onChangeShelf={onChangeShelf} />
                   </ol>
                 </div>
               </div>
@@ -36,6 +36,7 @@ const BookShelf = (props) => {
 
 BookShelf.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
 };
 
 export default BookShelf;
