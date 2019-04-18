@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BookShelfChanger from './BookShelfChanger';
 
 const BookItem = (props) => {
   const {
-    id, imageUrl, title, authors, shelf,
+    id, imageUrl, title, authors, shelf, onChangeShelf,
   } = props;
 
   return (
@@ -11,15 +12,7 @@ const BookItem = (props) => {
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageUrl})` }} />
-          <div className="book-shelf-changer">
-            <select value={shelf} readOnly>
-              <option value="move" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+          <BookShelfChanger id={id} shelf={shelf} onChangeShelf={onChangeShelf} />
         </div>
         <div className="book-title">{title}</div>
         <div className="book-authors">
@@ -38,6 +31,7 @@ BookItem.propTypes = {
   title: PropTypes.string.isRequired,
   authors: PropTypes.instanceOf(Array),
   shelf: PropTypes.string,
+  onChangeShelf: PropTypes.func.isRequired,
 };
 
 BookItem.defaultProps = {

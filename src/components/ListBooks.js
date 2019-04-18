@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import BookShelf from './BookShelf';
 
 const ListBooks = (props) => {
-  const { books } = props;
+  const { books, onChangeShelf } = props;
 
   return (
     <React.Fragment>
@@ -12,7 +12,7 @@ const ListBooks = (props) => {
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <BookShelf books={books} />
+        <BookShelf books={books} onChangeShelf={onChangeShelf} />
       </div>
       <div className="open-search">
         <Link to="/search">Add a book</Link>
@@ -23,6 +23,7 @@ const ListBooks = (props) => {
 
 ListBooks.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
 };
 
 export default ListBooks;
