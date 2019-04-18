@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PageNotFound = () => (
-  <div>
+  <div className="page-not-found">
     <h3>Oops! Sorry the page was not found.</h3>
     <p>
       Go back
