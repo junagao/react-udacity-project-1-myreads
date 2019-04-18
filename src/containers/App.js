@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import * as BooksAPI from '../BooksAPI';
 import ListBooks from '../components/ListBooks';
 import SearchBooks from '../components/SearchBooks';
-import BooksNotFound from '../components/BooksNotFound';
+import PageNotFound from '../components/PageNotFound';
 import './App.scss';
 
 export default class App extends React.Component {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
               )}
             />
             <Route path="/search" component={SearchBooks} />
-            <Route component={BooksNotFound} />
+            <Route component={PageNotFound} />
           </Switch>
         </div>
       </React.Fragment>
