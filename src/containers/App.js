@@ -14,7 +14,7 @@ export default class App extends React.Component {
     this.fetchBooks();
   }
 
-  fetchBooks() {
+  fetchBooks = () => {
     BooksAPI.getAll()
       .then(books => this.setState({ books }));
   }
