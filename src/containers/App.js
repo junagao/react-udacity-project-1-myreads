@@ -24,8 +24,9 @@ export default class App extends React.Component {
   }
 
   changeShelf = (bookToChangeId, newShelf) => {
-    const { books } = this.state;
-    const bookToChange = books.filter(book => book.id === bookToChangeId)[0];
+    const { books, searchResults } = this.state;
+    const allBooks = [...books, ...searchResults];
+    const bookToChange = allBooks.filter(book => book.id === bookToChangeId)[0];
     bookToChange.shelf = newShelf;
     BooksAPI.update(bookToChange, newShelf)
       .then(() => this.fetchBooks());
