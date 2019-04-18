@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { DebounceInput } from 'react-debounce-input';
 import SearchResults from './SearchResults';
 
 const SearchBooks = (props) => {
@@ -13,10 +14,12 @@ const SearchBooks = (props) => {
       <div className="search-books-bar">
         <Link className="close-search" to="/">Close</Link>
         <div className="search-books-input-wrapper">
-          <input
+          <DebounceInput
             type="text"
             placeholder="Search by title or author"
             value={query}
+            minLength={1}
+            debounceTimeout={200}
             onChange={e => onSearchBook(e.target.value)}
           />
         </div>
