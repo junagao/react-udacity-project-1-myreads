@@ -1,8 +1,9 @@
 import React from 'react';
+import { CircleSpinner } from 'react-spinners-kit';
 
 const LoadingSearch = () => (
   <div className="loading-search">
-    <h3>Loading...</h3>
+    <CircleSpinner size={22} color="#60ac5d" />
   </div>
 );
 
