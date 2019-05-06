@@ -40,10 +40,10 @@ export default class App extends React.Component {
   };
 
   handleSearch = (query) => {
-    // set state query and searchState to loading
+    // set state query and searchState to loadingSearch
     this.setState({ query, searchState: 'loadingSearch' });
 
-    // if no user input, set searchResults to [] and searchState to 'clearresults'
+    // if no user input, set searchResults to empty string and searchState to 'clearSearchResults'
     if (query === '') {
       this.setState({ searchResults: [''], searchState: 'clearSearchResults' });
     }
