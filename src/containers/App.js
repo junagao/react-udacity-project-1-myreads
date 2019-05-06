@@ -70,12 +70,21 @@ export default class App extends React.Component {
 
   changeRating = (bookId, rating) => {
     const { bookRatings } = this.state;
-    this.setState(state => ({
+    if (rating !== bookRatings[bookId]) {
+      this.setRating(bookId, rating);
+    } else {
+      this.setRating(bookId, 0);
+    }
+  }
+
+  setRating = (bookId, rating) => {
+    const { bookRatings } = this.state;
+    this.setState({
       bookRatings: {
-        ...state.bookRatings,
+        ...bookRatings,
         [bookId]: rating,
       },
-    }));
+    });
     window.localStorage.setItem(
       'bookRatings',
       JSON.stringify({
