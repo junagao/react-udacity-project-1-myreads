@@ -1,4 +1,4 @@
-# MyReads Project
+# MyReads
 
 This is my final assessment project for Udacity's React Fundamentals course.
 
@@ -26,7 +26,7 @@ yarn start
 
 3. Open your browser and navigate:
 
-http://localhost:3000
+  http://localhost:3000
 
 ## 🧐 What's inside?
 
@@ -51,12 +51,17 @@ http://localhost:3000
 * Testing
 * Deployment
 
-## Development Stack
+## Tech Stack
 
 * Webpack
 * Babel
 * ESLint
 * React
+  * react-router
+  * react-spinners-kit
+  * react-fontawesome
+* Jest
+* Enzyme
 
 ## Backend Server
 
