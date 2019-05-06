@@ -3,33 +3,29 @@ import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
 import Rating from './Rating';
 
-const BookItem = (props) => {
-  const {
-    id, imageUrl, title, authors, shelf, onChangeShelf,
-    maxRating, bookRatings, onChangeRating,
-  } = props;
-
-  return (
-    <li key={id}>
-      <div className="book">
-        <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageUrl})` }} />
-          <BookShelfChanger id={id} shelf={shelf} onChangeShelf={onChangeShelf} />
-        </div>
-        <div className="book-title">{title}</div>
-        <div className="book-authors">
-          {authors}
-        </div>
-        <Rating
-          bookId={id}
-          maxRating={maxRating}
-          bookRatings={bookRatings}
-          onChangeRating={onChangeRating}
-        />
+const BookItem = ({
+  id, imageUrl, title, authors, shelf, onChangeShelf,
+  maxRating, bookRatings, onChangeRating,
+}) => (
+  <li key={id}>
+    <div className="book">
+      <div className="book-top">
+        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageUrl})` }} />
+        <BookShelfChanger id={id} shelf={shelf} onChangeShelf={onChangeShelf} />
       </div>
-    </li>
-  );
-};
+      <div className="book-title">{title}</div>
+      <div className="book-authors">
+        {authors}
+      </div>
+      <Rating
+        bookId={id}
+        maxRating={maxRating}
+        bookRatings={bookRatings}
+        onChangeRating={onChangeRating}
+      />
+    </div>
+  </li>
+);
 
 BookItem.propTypes = {
   id: PropTypes.string.isRequired,
