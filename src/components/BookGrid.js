@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import BookItem from './BookItem';
 
 const BookGrid = (props) => {
-  const { books, onChangeShelf } = props;
+  const {
+    books, onChangeShelf, maxRating, bookRatings, onChangeRating,
+  } = props;
 
   return (
     <React.Fragment>
@@ -16,6 +18,9 @@ const BookGrid = (props) => {
           authors={book.authors}
           shelf={book.shelf}
           onChangeShelf={onChangeShelf}
+          maxRating={maxRating}
+          bookRatings={bookRatings}
+          onChangeRating={onChangeRating}
         />
       ))}
     </React.Fragment>
@@ -25,6 +30,9 @@ const BookGrid = (props) => {
 BookGrid.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
   onChangeShelf: PropTypes.func.isRequired,
+  maxRating: PropTypes.number.isRequired,
+  bookRatings: PropTypes.instanceOf(Object).isRequired,
+  onChangeRating: PropTypes.func.isRequired,
 };
 
 export default BookGrid;
