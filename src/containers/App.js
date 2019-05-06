@@ -1,10 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import * as BooksAPI from '../BooksAPI';
 import ListBooks from '../components/ListBooks';
 import SearchBooks from '../components/SearchBooks';
 import PageNotFound from '../components/PageNotFound';
 import './App.scss';
+
+library.add(faHeart);
 
 export default class App extends React.Component {
   state = {
@@ -12,10 +16,13 @@ export default class App extends React.Component {
     query: '',
     searchResults: [],
     searchState: '',
+    maxRating: 3,
+    bookRatings: {},
   }
 
   componentDidMount() {
     this.fetchBooks();
+    this.fetchBookRatings();
   }
 
   fetchBooks = () => {
@@ -61,9 +68,35 @@ export default class App extends React.Component {
     }
   };
 
+  changeRating = (bookId, rating) => {
+    const { bookRatings } = this.state;
+    this.setState(state => ({
+      bookRatings: {
+        ...state.bookRatings,
+        [bookId]: rating,
+      },
+    }));
+    window.localStorage.setItem(
+      'bookRatings',
+      JSON.stringify({
+        ...bookRatings,
+        [bookId]: rating,
+      }),
+    );
+  }
+
+  fetchBookRatings = () => {
+    const ratings = window.localStorage.getItem('bookRatings');
+    if (!ratings) {
+      window.localStorage.setItem('bookRatings', JSON.stringify({}));
+    } else {
+      this.setState({ bookRatings: JSON.parse(ratings) });
+    }
+  }
+
   render() {
     const {
-      books, query, searchResults, searchState,
+      books, query, searchResults, searchState, maxRating, bookRatings,
     } = this.state;
 
     return (
@@ -74,7 +107,13 @@ export default class App extends React.Component {
               exact
               path="/"
               render={() => (
-                <ListBooks books={books} onChangeShelf={this.changeShelf} />
+                <ListBooks
+                  books={books}
+                  onChangeShelf={this.changeShelf}
+                  maxRating={maxRating}
+                  bookRatings={bookRatings}
+                  onChangeRating={this.changeRating}
+                />
               )}
             />
             <Route
@@ -86,6 +125,9 @@ export default class App extends React.Component {
                   searchState={searchState}
                   onSearchBook={this.handleSearch}
                   onChangeShelf={this.changeShelf}
+                  maxRating={maxRating}
+                  bookRatings={bookRatings}
+                  onChangeRating={this.changeRating}
                 />
               )}
             />

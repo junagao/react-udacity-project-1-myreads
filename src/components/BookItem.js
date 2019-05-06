@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
+import Rating from './Rating';
 
 const BookItem = (props) => {
   const {
     id, imageUrl, title, authors, shelf, onChangeShelf,
+    maxRating, bookRatings, onChangeRating,
   } = props;
 
   return (
@@ -18,12 +20,16 @@ const BookItem = (props) => {
         <div className="book-authors">
           {authors}
         </div>
+        <Rating
+          bookId={id}
+          maxRating={maxRating}
+          bookRatings={bookRatings}
+          onChangeRating={onChangeRating}
+        />
       </div>
     </li>
   );
 };
-
-export default BookItem;
 
 BookItem.propTypes = {
   id: PropTypes.string.isRequired,
@@ -32,9 +38,14 @@ BookItem.propTypes = {
   authors: PropTypes.instanceOf(Array),
   shelf: PropTypes.string,
   onChangeShelf: PropTypes.func.isRequired,
+  maxRating: PropTypes.number.isRequired,
+  bookRatings: PropTypes.instanceOf(Object).isRequired,
+  onChangeRating: PropTypes.func.isRequired,
 };
 
 BookItem.defaultProps = {
   shelf: 'none',
   authors: [],
 };
+
+export default BookItem;

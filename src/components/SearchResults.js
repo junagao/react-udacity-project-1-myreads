@@ -4,7 +4,9 @@ import BookItem from './BookItem';
 import noCoverImg from '../assets/images/no-cover.png';
 
 const SearchResults = (props) => {
-  const { searchResults, onChangeShelf } = props;
+  const {
+    searchResults, onChangeShelf, maxRating, bookRatings, onChangeRating,
+  } = props;
 
   return (
     searchResults.length > 0 && (
@@ -33,6 +35,9 @@ const SearchResults = (props) => {
                 authors={bookToRender.authors}
                 shelf={bookToRender.shelf}
                 onChangeShelf={onChangeShelf}
+                maxRating={maxRating}
+                bookRatings={bookRatings}
+                onChangeRating={onChangeRating}
               />
             );
           })}
@@ -45,6 +50,9 @@ const SearchResults = (props) => {
 SearchResults.propTypes = {
   searchResults: PropTypes.instanceOf(Array).isRequired,
   onChangeShelf: PropTypes.func.isRequired,
+  maxRating: PropTypes.number.isRequired,
+  bookRatings: PropTypes.instanceOf(Object).isRequired,
+  onChangeRating: PropTypes.func.isRequired,
 };
 
 export default SearchResults;

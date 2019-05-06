@@ -10,6 +10,7 @@ import LoadingSearch from './LoadingSearch';
 const SearchBooks = (props) => {
   const {
     query, searchResults, searchState, onSearchBook, onChangeShelf,
+    maxRating, bookRatings, onChangeRating,
   } = props;
 
   return (
@@ -29,7 +30,13 @@ const SearchBooks = (props) => {
       </div>
       <div className="search-books-results">
         {{
-          results: <SearchResults searchResults={searchResults} onChangeShelf={onChangeShelf} />,
+          results: <SearchResults
+            searchResults={searchResults}
+            onChangeShelf={onChangeShelf}
+            maxRating={maxRating}
+            bookRatings={bookRatings}
+            onChangeRating={onChangeRating}
+          />,
           noSearchResults: <NoSearchResults />,
           clearSearchResults: <ClearSearchResults searchResults={searchResults} />,
           loadingSearch: <LoadingSearch />,
@@ -45,6 +52,9 @@ SearchBooks.propTypes = {
   searchState: PropTypes.string.isRequired,
   onSearchBook: PropTypes.func.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
+  maxRating: PropTypes.number.isRequired,
+  bookRatings: PropTypes.instanceOf(Object).isRequired,
+  onChangeRating: PropTypes.func.isRequired,
 };
 
 export default SearchBooks;
