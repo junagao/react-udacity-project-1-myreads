@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BookGrid from './BookGrid';
 
-const BookShelf = (props) => {
-  const {
-    books, onChangeShelf, maxRating, bookRatings, onChangeRating,
-  } = props;
-
+const BookShelf = ({
+  books, onChangeShelf, maxRating, bookRatings, onChangeRating,
+}) => {
   const shelfTypes = [
     { id: 1, type: 'currentlyReading', title: 'Currently Reading' },
     { id: 2, type: 'wantToRead', title: 'Want to Read' },
