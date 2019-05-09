@@ -16,7 +16,6 @@ export default class App extends React.Component {
     query: '',
     searchResults: [],
     searchState: '',
-    maxRating: 3,
     bookRatings: {},
   }
 
@@ -105,7 +104,7 @@ export default class App extends React.Component {
 
   render() {
     const {
-      books, query, searchResults, searchState, maxRating, bookRatings,
+      books, query, searchResults, searchState, bookRatings,
     } = this.state;
 
     return (
@@ -119,7 +118,6 @@ export default class App extends React.Component {
                 <ListBooks
                   books={books}
                   onChangeShelf={this.changeShelf}
-                  maxRating={maxRating}
                   bookRatings={bookRatings}
                   onChangeRating={this.changeRating}
                 />
@@ -134,8 +132,6 @@ export default class App extends React.Component {
                   searchState={searchState}
                   onSearchBook={this.handleSearch}
                   onChangeShelf={this.changeShelf}
-                  maxRating={maxRating}
-                  bookRatings={bookRatings}
                   onChangeRating={this.changeRating}
                 />
               )}
