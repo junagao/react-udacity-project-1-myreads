@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
-import Rating from './Rating';
+import Ratings from './Ratings';
 
 const BookItem = ({
-  id, imageUrl, title, authors, shelf, onChangeShelf,
-  maxRating, bookRatings, onChangeRating,
+  id, imageUrl, title, authors, shelf, onChangeShelf, currentRating, onChangeRating,
 }) => (
   <li key={id}>
     <div className="book">
@@ -17,10 +16,9 @@ const BookItem = ({
       <div className="book-authors">
         {authors}
       </div>
-      <Rating
+      <Ratings
         bookId={id}
-        maxRating={maxRating}
-        bookRatings={bookRatings}
+        currentRating={currentRating}
         onChangeRating={onChangeRating}
       />
     </div>
@@ -34,8 +32,7 @@ BookItem.propTypes = {
   authors: PropTypes.instanceOf(Array),
   shelf: PropTypes.string,
   onChangeShelf: PropTypes.func.isRequired,
-  maxRating: PropTypes.number.isRequired,
-  bookRatings: PropTypes.instanceOf(Object).isRequired,
+  currentRating: PropTypes.number.isRequired,
   onChangeRating: PropTypes.func.isRequired,
 };
 
