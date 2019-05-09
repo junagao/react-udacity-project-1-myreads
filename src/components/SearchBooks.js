@@ -9,7 +9,7 @@ import LoadingSearch from './LoadingSearch';
 
 const SearchBooks = ({
   query, searchResults, searchState, onSearchBook, onChangeShelf,
-  maxRating, bookRatings, onChangeRating,
+  bookRatings, onChangeRating,
 }) => (
   <div className="search-books">
     <div className="search-books-bar">
@@ -30,7 +30,6 @@ const SearchBooks = ({
         results: <SearchResults
           searchResults={searchResults}
           onChangeShelf={onChangeShelf}
-          maxRating={maxRating}
           bookRatings={bookRatings}
           onChangeRating={onChangeRating}
         />,
@@ -48,7 +47,6 @@ SearchBooks.propTypes = {
   searchState: PropTypes.string.isRequired,
   onSearchBook: PropTypes.func.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
-  maxRating: PropTypes.number.isRequired,
   bookRatings: PropTypes.instanceOf(Object).isRequired,
   onChangeRating: PropTypes.func.isRequired,
 };
