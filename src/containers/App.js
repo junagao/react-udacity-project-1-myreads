@@ -132,6 +132,7 @@ export default class App extends React.Component {
                   searchState={searchState}
                   onSearchBook={this.handleSearch}
                   onChangeShelf={this.changeShelf}
+                  bookRatings={bookRatings}
                   onChangeRating={this.changeRating}
                 />
               )}
