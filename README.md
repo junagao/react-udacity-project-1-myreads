@@ -6,7 +6,11 @@ MyReads is a bookcase application that allows you to select and sort the books y
 
 I chose to build this project from scratch using React, Webpack, Babel, ESlint, instead of using plain Create React App.
 
-## Demo
+## Screenshots
+
+![myreads-screenshot-1](./src/assets/images/myreads-screenshot-1.png)
+
+![myreads-screenshot-2](./src/assets/images/myreads-screenshot-2.png)
 
 ## 🚀 Quick start
 
@@ -44,12 +48,55 @@ yarn start
 
 ### Aditional Features
 
-* Loading Search Results
+* Loading
 * Debounce to support live search (If not so, ajax call is too frequent)
 * Page not found
-* Rating
-* Testing
-* Deployment
+* Ratings
+
+### Backend Server
+
+* BooksAPI: Book search API provided by Udacity! BooksAPI
+
+To simplify the development process, I used the provided backend server. The provided file [`BooksAPI.js`](./src/BooksAPI.js) contains the methods needed to perform necessary operations on the backend:
+
+* [`getAll`](#getall)
+* [`update`](#update)
+* [`search`](#search)
+
+#### `getAll`
+
+Method Signature:
+
+```js
+getAll()
+```
+
+* Returns a Promise which resolves to a JSON object containing a collection of book objects.
+* This collection represents the books currently in the bookshelves in your app.
+
+#### `update`
+
+Method Signature:
+
+```js
+update(book, shelf)
+```
+
+* book: `<Object>` containing at minimum an `id` attribute
+* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
+* Returns a Promise which resolves to a JSON object containing the response data of the POST request
+
+#### `search`
+
+Method Signature:
+
+```js
+search(query)
+```
+
+* query: `<String>`
+* Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
+* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
 ## Tech Stack
 
@@ -63,47 +110,7 @@ yarn start
 * Jest
 * Enzyme
 
-## Backend Server
+## What's next
 
-* BooksAPI: Book search API provided by Udacity! BooksAPI
-
-To simplify the development process, I used the provided backend server. The provided file [`BooksAPI.js`](./src/BooksAPI.js) contains the methods needed to perform necessary operations on the backend:
-
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
-
-### `getAll`
-
-Method Signature:
-
-```js
-getAll()
-```
-
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
-
-### `update`
-
-Method Signature:
-
-```js
-update(book, shelf)
-```
-
-* book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
-* Returns a Promise which resolves to a JSON object containing the response data of the POST request
-
-### `search`
-
-Method Signature:
-
-```js
-search(query)
-```
-
-* query: `<String>`
-* Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+* Testing
+* Deployment
