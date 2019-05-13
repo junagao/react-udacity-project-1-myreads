@@ -14,7 +14,7 @@ const BookItem = ({
       </div>
       <div className="book-title">{title}</div>
       <div className="book-authors">
-        {authors}
+        {authors ? authors.join(', ') : ''}
       </div>
       <Ratings
         bookId={id}
