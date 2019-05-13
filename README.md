@@ -114,3 +114,11 @@ search(query)
 
 * Testing
 * Deployment
+
+## Author
+
+Juliane Nagao - [GitHub](https://github.com/junagao) - [LinkedIn](https://www.linkedin.com/in/junagao/)
+
+## License
+
+This project is licensed under the MIT License.
