@@ -6,7 +6,7 @@ MyReads is a bookcase application that allows you to select and sort the books y
 
 I chose to build this project from scratch using React, Webpack, Babel, ESlint, instead of using plain Create React App.
 
-## Screenshots
+## 👀 Screenshots
 
 ![myreads-screenshot-1](./src/assets/images/myreads-screenshot-1.png)
 
@@ -34,7 +34,7 @@ yarn start
 
 ## 🧐 What's inside?
 
-### Features (requirements)
+### Features (Requirements)
 
 * Display 3 book shelves:
   * Currently Reading
@@ -98,7 +98,7 @@ search(query)
 * Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
-## Tech Stack
+## 📚 Tech Stack
 
 * Webpack
 * Babel
@@ -110,7 +110,7 @@ search(query)
 * Jest
 * Enzyme
 
-## What's next
+## 💡What's next
 
 * Testing
 * Deployment
