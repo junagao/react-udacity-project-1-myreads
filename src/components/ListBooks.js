@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import BookShelf from './BookShelf';
 
 const ListBooks = ({
-  books, onChangeShelf, bookRatings, onChangeRating,
+  books, loadingBooks, onChangeShelf, bookRatings, onChangeRating,
 }) => (
   <React.Fragment>
     <div className="list-books">
@@ -13,6 +13,7 @@ const ListBooks = ({
       </div>
       <BookShelf
         books={books}
+        loadingBooks={loadingBooks}
         onChangeShelf={onChangeShelf}
         bookRatings={bookRatings}
         onChangeRating={onChangeRating}
@@ -26,6 +27,7 @@ const ListBooks = ({
 
 ListBooks.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
+  loadingBooks: PropTypes.bool.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
   bookRatings: PropTypes.shape({}).isRequired,
   onChangeRating: PropTypes.func.isRequired,

@@ -48,7 +48,7 @@ yarn start
 
 ### Aditional Features
 
-* Loading
+* Loading animation (books and searched books)
 * Debounce to support live search (If not so, ajax call is too frequent)
 * Page not found
 * Ratings
