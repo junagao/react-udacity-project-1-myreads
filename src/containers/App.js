@@ -13,6 +13,7 @@ library.add(faHeart);
 export default class App extends React.Component {
   state = {
     books: [],
+    loadingBooks: true,
     query: '',
     searchResults: [],
     searchState: '',
@@ -26,7 +27,10 @@ export default class App extends React.Component {
 
   fetchBooks = () => {
     BooksAPI.getAll()
-      .then(books => this.setState({ books }));
+      .then(books => this.setState({
+        books,
+        loadingBooks: false,
+      }));
   }
 
   changeShelf = (bookToChangeId, newShelf) => {
@@ -104,7 +108,7 @@ export default class App extends React.Component {
 
   render() {
     const {
-      books, query, searchResults, searchState, bookRatings,
+      books, loadingBooks, query, searchResults, searchState, bookRatings,
     } = this.state;
 
     return (
@@ -117,6 +121,7 @@ export default class App extends React.Component {
               render={() => (
                 <ListBooks
                   books={books}
+                  loadingBooks={loadingBooks}
                   onChangeShelf={this.changeShelf}
                   bookRatings={bookRatings}
                   onChangeRating={this.changeRating}

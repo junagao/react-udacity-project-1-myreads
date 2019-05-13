@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookGrid from './BookGrid';
+import Loading from './Loading';
 
 const BookShelf = ({
-  books, onChangeShelf, bookRatings, onChangeRating,
+  books, loadingBooks, onChangeShelf, bookRatings, onChangeRating,
 }) => {
   const shelfTypes = [
     { id: 1, type: 'currentlyReading', title: 'Currently Reading' },
@@ -22,12 +23,16 @@ const BookShelf = ({
                 <h2 className="bookshelf-title">{shelf.title}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
-                    <BookGrid
-                      books={shelfBooks}
-                      onChangeShelf={onChangeShelf}
-                      bookRatings={bookRatings}
-                      onChangeRating={onChangeRating}
-                    />
+                    {loadingBooks
+                      ? (<Loading />)
+                      : (
+                        <BookGrid
+                          books={shelfBooks}
+                          onChangeShelf={onChangeShelf}
+                          bookRatings={bookRatings}
+                          onChangeRating={onChangeRating}
+                        />
+                      )}
                   </ol>
                 </div>
               </div>
@@ -41,6 +46,7 @@ const BookShelf = ({
 
 BookShelf.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
+  loadingBooks: PropTypes.bool.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
   bookRatings: PropTypes.shape({}).isRequired,
   onChangeRating: PropTypes.func.isRequired,

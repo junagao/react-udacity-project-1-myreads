@@ -5,7 +5,7 @@ import { DebounceInput } from 'react-debounce-input';
 import SearchResults from './SearchResults';
 import NoSearchResults from './NoSearchResults';
 import ClearSearchResults from './ClearSearchResults';
-import LoadingSearch from './LoadingSearch';
+import Loading from './Loading';
 
 const SearchBooks = ({
   query, searchResults, searchState, onSearchBook, onChangeShelf,
@@ -35,7 +35,7 @@ const SearchBooks = ({
         />,
         noSearchResults: <NoSearchResults />,
         clearSearchResults: <ClearSearchResults searchResults={searchResults} />,
-        loadingSearch: <LoadingSearch />,
+        loadingSearch: <Loading />,
       }[searchState]}
     </div>
   </div>
