@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookItem from './BookItem';
+import noCoverImg from '../assets/images/no-cover.png';
 
 const BookGrid = ({
   books, onChangeShelf, bookRatings, onChangeRating,
@@ -10,7 +11,9 @@ const BookGrid = ({
       <BookItem
         key={book.id}
         id={book.id}
-        imageUrl={book.imageLinks.thumbnail}
+        imageUrl={book.imageLinks && book.imageLinks.thumbnail
+          ? book.imageLinks.thumbnail
+          : noCoverImg}
         title={book.title}
         authors={book.authors}
         shelf={book.shelf}
