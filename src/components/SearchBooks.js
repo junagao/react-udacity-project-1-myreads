@@ -8,12 +8,12 @@ import ClearSearchResults from './ClearSearchResults';
 import Loading from './Loading';
 
 const SearchBooks = ({
-  query, searchResults, searchState, onSearchBook, onChangeShelf,
-  bookRatings, onChangeRating,
+  clearSearch, query, searchResults, searchState, onSearchBook,
+  onChangeShelf, bookRatings, onChangeRating,
 }) => (
   <div className="search-books">
     <div className="search-books-bar">
-      <Link className="close-search" to="/">Close</Link>
+      <Link className="close-search" to="/" onChange={() => clearSearch}>Close</Link>
       <div className="search-books-input-wrapper">
         <DebounceInput
           type="text"
@@ -42,6 +42,7 @@ const SearchBooks = ({
 );
 
 SearchBooks.propTypes = {
+  clearSearch: PropTypes.func.isRequired,
   query: PropTypes.string.isRequired,
   searchResults: PropTypes.instanceOf(Array).isRequired,
   searchState: PropTypes.string.isRequired,
