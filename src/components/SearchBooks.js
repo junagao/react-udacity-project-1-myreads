@@ -13,7 +13,7 @@ const SearchBooks = ({
 }) => (
   <div className="search-books">
     <div className="search-books-bar">
-      <Link className="close-search" to="/" onChange={() => clearSearch}>Close</Link>
+      <Link className="close-search" to="/" onClick={() => clearSearch()}>Close</Link>
       <div className="search-books-input-wrapper">
         <DebounceInput
           type="text"
