@@ -6,7 +6,9 @@ MyReads is a bookcase application that allows you to select and sort the books y
 
 I chose to build this project from scratch using React, Webpack, Babel, ESlint, instead of using plain Create React App.
 
-## 👀 Screenshots
+## 👀 Demo and Screenshots
+
+For a demo, check out https://myreads-app.netlify.com/
 
 ![myreads-screenshot-1](./src/assets/images/myreads-screenshot-1.png)
 
@@ -52,6 +54,7 @@ yarn start
 * Debounce to support live search (If not so, ajax call is too frequent)
 * Page not found
 * Ratings
+* Deployment
 
 ### Backend Server
 
@@ -113,7 +116,6 @@ search(query)
 ## 💡What's next
 
 * Testing
-* Deployment
 
 ## Author
 
