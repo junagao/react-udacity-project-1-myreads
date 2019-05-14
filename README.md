@@ -54,7 +54,7 @@ yarn start
 * Debounce to support live search (If not so, ajax call is too frequent)
 * Page not found
 * Ratings
-* Deployment
+* Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/1667245f-ba97-42e5-b70a-9ecaed1995b5/deploy-status)](https://app.netlify.com/sites/myreads-app/deploys)
 
 ### Backend Server
 
