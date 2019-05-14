@@ -7,43 +7,39 @@ import NoSearchResults from './NoSearchResults';
 import ClearSearchResults from './ClearSearchResults';
 import Loading from './Loading';
 
-const SearchBooks = (props) => {
-  const {
-    clearSearch, query, searchResults, searchState, onSearchBook,
-    onChangeShelf, bookRatings, onChangeRating,
-  } = props;
-
-  return (
-    <div className="search-books">
-      <div className="search-books-bar">
-        <Link className="close-search" to="/" onChange={() => clearSearch}>Close</Link>
-        <div className="search-books-input-wrapper">
-          <DebounceInput
-            type="text"
-            placeholder="Search by title or author"
-            value={query}
-            minLength={1}
-            debounceTimeout={200}
-            onChange={e => onSearchBook(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="search-books-results">
-        {{
-          results: <SearchResults
-            searchResults={searchResults}
-            onChangeShelf={onChangeShelf}
-            bookRatings={bookRatings}
-            onChangeRating={onChangeRating}
-          />,
-          noSearchResults: <NoSearchResults />,
-          clearSearchResults: <ClearSearchResults searchResults={searchResults} />,
-          loadingSearch: <Loading />,
-        }[searchState]}
+const SearchBooks = ({
+  clearSearch, query, searchResults, searchState, onSearchBook,
+  onChangeShelf, bookRatings, onChangeRating,
+}) => (
+  <div className="search-books">
+    <div className="search-books-bar">
+      <Link className="close-search" to="/" onChange={() => clearSearch}>Close</Link>
+      <div className="search-books-input-wrapper">
+        <DebounceInput
+          type="text"
+          placeholder="Search by title or author"
+          value={query}
+          minLength={1}
+          debounceTimeout={200}
+          onChange={e => onSearchBook(e.target.value)}
+        />
       </div>
     </div>
-  );
-};
+    <div className="search-books-results">
+      {{
+        results: <SearchResults
+          searchResults={searchResults}
+          onChangeShelf={onChangeShelf}
+          bookRatings={bookRatings}
+          onChangeRating={onChangeRating}
+        />,
+        noSearchResults: <NoSearchResults />,
+        clearSearchResults: <ClearSearchResults searchResults={searchResults} />,
+        loadingSearch: <Loading />,
+      }[searchState]}
+    </div>
+  </div>
+);
 
 SearchBooks.propTypes = {
   clearSearch: PropTypes.func.isRequired,
