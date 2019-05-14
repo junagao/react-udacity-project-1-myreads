@@ -71,6 +71,13 @@ export default class App extends React.Component {
     }
   };
 
+  clearSearch = () => {
+    this.setState({
+      query: '',
+      searchResults: [],
+    });
+  }
+
   changeRating = (bookId, rating) => {
     const { bookRatings } = this.state;
     if (rating !== bookRatings[bookId]) {
@@ -132,6 +139,7 @@ export default class App extends React.Component {
               path="/search"
               render={() => (
                 <SearchBooks
+                  clearSearch={this.clearSearch}
                   query={query}
                   searchResults={searchResults}
                   searchState={searchState}
